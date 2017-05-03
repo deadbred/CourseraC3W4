@@ -8,7 +8,7 @@ class Address
 	end
 
 	def mongoize
-		return { :city=> @city, :state=>@state, :loc=>{:type=>"Point", :coordinates=> [@location.longitude, @location.latitude]}}
+		return { :city=> @city, :state=>@state, :loc=> @location.mongoize}
 	end
 
 	def self.mongoize(object)
