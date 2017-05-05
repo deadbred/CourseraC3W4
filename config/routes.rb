@@ -5,20 +5,14 @@ Rails.application.routes.draw do
 
   resources :races
 
-  get "/api/races/" => "races#index"
+  namespace :api do
+  	resources :races do
+  		resources :results
+  	end
 
-  get "/api/races/:id" => "races#show"
-
-  get "/api/races/:race_id/results" => "races#show"
-
-  get "/api/races/:race_id/results/:id" => "races#show"
-
-  get "/api/racers" => "racers#index"
-
-  get "/api/racers/:id" => "racers#show"
-
-  get "/api/racers/:racer_id/entries" => "racers#show"
-
-  get "/api/racers/:racer_id/entries/:id" => "racers#show"
+  	resources :racers do
+  		resources :entries
+  	end
+  end
 
 end
